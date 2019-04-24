@@ -4,7 +4,6 @@ using namespace std;
 #include "Court.h"
 
 int main() {
-
     /* Larry is a basketball player with skill level 0.9 at (4.5, 3.25).
        Michael is a basketball player with skill level 0.95 at (10.5, 5.1).
        Michael has the ball. */
