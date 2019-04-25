@@ -1,8 +1,13 @@
+#include <functional>
 #include "Drone.h"
 #include "Pizza.h"
 
+using namespace std;
+
 int main() {
-    float commonAlt = 100;
+    static function<float()> getAltitude = []() -> float {
+        return 100;
+    };
     /*
      A Margherita pizza of weight 512 grams is prepared
     */
@@ -12,7 +17,7 @@ int main() {
      location (51.4988, -0.1749, 0)
     */
     pizza->cook();
-    Drone* drone = new Drone(51.4988, -0.1749, 0, &commonAlt);
+    Drone* drone = new Drone(51.4988, -0.1749, 0, &getAltitude);
     drone->load(pizza);
     /*
      The drone flies to location (51.5010, -0.1919, 31.5) where it
@@ -22,7 +27,9 @@ int main() {
     /*
      The cruising altitude for drones is set to 80 meters
     */
-    commonAlt = 80;
+    getAltitude = []() -> float {
+        return 80;
+    };
     /*
      The drone returns to location (51.4988, -0.1749, 0)
     */

@@ -5,9 +5,8 @@
 
 using namespace std;
 
-
-Drone::Drone(float lat, float lon, float alt, float* cruise):
-             lat(lat), lon(lon), alt(alt), cruise(cruise) {}
+Drone::Drone(float lat, float lon, float alt, function<float()>* getAltitude):
+             lat(lat), lon(lon), alt(alt), getAltitude(getAltitude) {}
 
 
 bool Drone::load(Pizza* p) {
@@ -24,7 +23,7 @@ bool Drone::load(Pizza* p) {
 
 
 void Drone::flyTo(float lat, float lon, float alt) {
-    ascend(*cruise);
+    ascend((*getAltitude)());
     move(lat, lon);
     descend(alt);
     if (pizza) release();
