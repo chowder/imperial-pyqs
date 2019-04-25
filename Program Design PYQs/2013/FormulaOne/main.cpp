@@ -16,21 +16,17 @@ int main() {
     nr14->setDriver(lewis);
     tfd2->setDriver(lewis);
 
-    results = nr14->benchmark(1000);
     cout << "Time taken for Lewis Hamilton to race the NR-14 over 1000m is "
-         << results << endl;
+         << nr14->benchmark(1000) << endl;
 
-    results = tfd2->benchmark(1500);
     cout << "Time taken for Lewis Hamlton to race the TFD-2 over 1500m is "
-         << results << endl;
+         << tfd2->benchmark(1500) << endl;
 
     min_mass = 550;
 
-    results = nr14->benchmark(1000);
     cout << "Time taken for Lewis Hamilton to race the NR-14 over 1000m is "
-         << results << endl;
+         << nr14->benchmark(1000) << endl;
 
-    results = tfd2->benchmark(1500);
     cout << "Time taken for Lewis Hamlton to race the TFD-2 over 1500m is "
-         << results << endl;
+         << tfd2->benchmark(1500) << endl;
 }
