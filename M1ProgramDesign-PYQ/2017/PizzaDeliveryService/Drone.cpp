@@ -5,8 +5,10 @@
 
 using namespace std;
 
-Drone::Drone(float lat, float lon, float alt, function<float()>* getAltitude):
-             lat(lat), lon(lon), alt(alt), getAltitude(getAltitude) {}
+Drone::Drone(float lat, float lon, float alt):
+             lat(lat), lon(lon), alt(alt) {}
+
+float Drone::cruising_altidude = 100;
 
 
 bool Drone::load(Pizza* p) {
@@ -23,15 +25,15 @@ bool Drone::load(Pizza* p) {
 
 
 void Drone::flyTo(float lat, float lon, float alt) {
-    ascend((*getAltitude)());
+    changeAltitude(cruising_altidude);
     move(lat, lon);
-    descend(alt);
-    if (pizza) release();
+    changeAltitude(alt);
 }
 
 
-void Drone::ascend(float new_alt) {
-    cout << "Ascending to " << new_alt << " meters..." << endl;
+void Drone::changeAltitude(float new_alt) {
+    cout << (new_alt < alt ? "Descending" : "Ascending")
+         << " to " << new_alt << " meters..." << endl;
     alt = new_alt;
 }
 
@@ -43,19 +45,17 @@ void Drone::move(float new_lat, float new_lon) {
 }
 
 
-void Drone::descend(float new_alt) {
-    cout << "Descending to " << new_alt << " meters..." << endl;
-    alt = new_alt;
-}
-
-
-void Drone::release() {
+Pizza* Drone::release() {
     if (pizza) {
         cout << "Dropping the pizza..." << endl;
-        delete pizza;
+        Pizza* tmp = pizza;
         pizza = nullptr;
+        return tmp;
     }
-    else {
-        cout << "The pizza somehow disappeared!" << endl;
-    }
+    else cout << "The pizza somehow disappeared!" << endl;
+    return nullptr;
+}
+
+Drone::~Drone() {
+  if (pizza) delete pizza;
 }

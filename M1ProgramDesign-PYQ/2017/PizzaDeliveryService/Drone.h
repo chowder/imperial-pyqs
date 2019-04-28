@@ -9,16 +9,16 @@ class Drone {
     float lat;
     float lon;
     float alt;
-    std::function<float()>* getAltitude;
     Pizza* pizza;
-    void ascend(float);
     void move(float, float);
-    void descend(float);
-    void release();
+    void changeAltitude(float);
 public:
-    Drone(float, float, float, std::function<float()>*);
+    static float cruising_altidude;
+    Drone(float, float, float);
     bool load(Pizza* p);
     void flyTo(float, float, float);
+    Pizza* release();
+    ~Drone();
 };
 
 #endif
