@@ -101,12 +101,9 @@ ___
 ```
 procedure Add(Tree T, Node x)
   if T has children:
-    if x == T:
-      smaller = smallerSubtree(T.right, T.left)
-      Add(smaller, x)
     if x > T:
       Add(T.right, x)
-    else if x < T:
+    else if x <= T:
       Add(T.left, x)
   else:
     if x > T:
@@ -116,9 +113,8 @@ procedure Add(Tree T, Node x)
 ```
 
 ### ii.
-Without duplicate keys, the worst-case runtime runs in `O(N)`, where all elements lie on one branch of the tree, and the element is to be inserted at the end of this chain. The best-case runtime is `O(1)`, when the element to be inserted is on an empty slot at the root node.
 
-With duplicate keys, this problem forces a weak balancing to the tree, since duplicate keys are added to the smaller subtree of the two. Assuming that the size of each subtree can be determined in constant time (subtree length is stored in the information of the root node), then the insertion operation runs in `O(log N)` time.
+Without or without duplicate keys, the worst-case runtime runs in `O(N)`, where all elements lie on one branch of the tree, and the element is to be inserted at the end of this chain. The best-case runtime is `O(1)`, when the element to be inserted is on an empty slot at the root node.
 
 ## Question 3c
 
@@ -173,4 +169,4 @@ Bellman-Ford.
 
 The regular version of the Bellman-Ford algorithm relaxes *every edge* |V|-1 times, as the longest path without a cycle for a graph of V vertices is |V|-1. By modifying this value to Q we can obtain the shortest path containing at most Q edges.
 
-Djikstra's algorithm instead works by greedily choosing the closest vertex that has not been processed, and relaxing all its edges. 
+Djikstra's algorithm instead works by greedily choosing the closest vertex that has not been processed, and relaxing all its edges.
