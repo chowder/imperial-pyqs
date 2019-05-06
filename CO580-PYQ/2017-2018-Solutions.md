@@ -133,14 +133,14 @@ The worst case time to push N more objects would be if the last (Nth) push requi
 
 Therefore,
 
-`g(N) = (N-1)c + (M+N)c` or `(2N + M - 1)c`
+`g(N) = (M+N-1)c + Nc` or `(2N + M - 1)c`
 
 ### iii.
 
 The worst case time to push N objects would be if the last push required a copying of all objects
 
 
-`g(N) = Nc + (10 + 20 + (N-11) + (N-1))c`
+`g(N) = Nc + (10 + 20 + ... + (N-11) + (N-1))c`
 
 `g(N) = Nc + (N + 9)c * (N - 1)/10`
 
@@ -230,7 +230,7 @@ public boolean canColor(Vertex vertex, int color) {
 
 ### ii.
 
-The DFS search algorithm employed is a flood-fill algorithm, so no two nodes are visited twice. Therefore the worst-case complexity is `O(N)`
+The DFS search algorithm employed is a flood-fill algorithm, so each node is only explored once. Therefore the worst-case complexity is `O(V+E)`
 
 ## Question 4b
 
