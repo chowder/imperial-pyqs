@@ -194,26 +194,9 @@ Overall,
 
 ### ii.
 
-This reduces the number of sub-problems produced to two,
+This reduces the number of sub-problems produced to three, as steps 2-3 previously are removed, but one further multiplication of two N/2-digit numbers are introduced.
 
-`T(N) = 2T(N/2) + f`
-
-To multiply two N digit numbers, A and B:
-
-1. For each value of B, multiply each value of A
-2. Sum all of the values
-
-Step 1 runs in `O(N^2)` time, and step 2 runs in `O(N)` time.
-
-Therefore the complexity of this operation is `O(N^2)`
-
-Overall,
-
-`T(N) = 2T(N/2) + O(N^2) + O(N)`
-
-or
-
-`T(N) = 2T(N/2) + O(N^2)`
+`T(N) = 3T(N/2) + O(N)`
 
 ___
 
