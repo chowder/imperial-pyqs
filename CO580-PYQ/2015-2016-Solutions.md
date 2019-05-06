@@ -169,4 +169,8 @@ Consider cycle `B -> G -> F -> B` where edge B, F is the shortest but not part o
 
 ## Question 4c
 
-Bellman-Ford. Because relaxing each edge Q times would give the shortest path containing at most Q edges.
+Bellman-Ford.
+
+The regular version of the Bellman-Ford algorithm relaxes *every edge* |V|-1 times, as the longest path without a cycle for a graph of V vertices is |V|-1. By modifying this value to Q we can obtain the shortest path containing at most Q edges.
+
+Djikstra's algorithm instead works by greedily choosing the closest vertex that has not been processed, and relaxing all its edges. 
