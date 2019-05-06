@@ -75,7 +75,7 @@ public int MinCoins(Array<int> coins, int amount) {
   // recursive step
   int num = INFINITY;
   for (int coin: coins) {
-    if (coin >= amount) {
+    if (coin <= amount) {
       int result = MinCoins(coins, amount - coin) + 1;
       num = min(num, result);
     }
@@ -95,7 +95,7 @@ public int MinCoins(int[] coins, int amount, int[] memo) {
   // recursive step
   int num = INFINITY;
   for (int coin: coins) {
-    if (coin >= amount) {
+    if (coin <= amount) {
       int result = MinCoins(coins, amount - coin) + 1;
       num = min(num, result);
     }
