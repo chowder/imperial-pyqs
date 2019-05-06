@@ -65,8 +65,8 @@ public int minFare(int[] Out, int[] Rtn) {
   int minReturnFare = INT_MAX;
   for (int i = Out.size() - 6; i >= 0; i--) {
     int outFare = Out[i];
-    int returnFare = min(minReturnFare, Rtn[i + 5]);
-    minTotalFare = min(minTotalFare, outFare + returnFare);
+    minReturnFare = min(minReturnFare, Rtn[i + 5]);
+    minTotalFare = min(minTotalFare, outFare + minReturnFare);
   }
   return minTotalFare;
 }
